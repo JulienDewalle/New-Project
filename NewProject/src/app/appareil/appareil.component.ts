@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-appareil',
@@ -6,10 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./appareil.component.scss']
 })
 export class AppareilComponent{
-  appareilName: string = 'Machine à laver';
-  appareilStatus: string = "éteint";
+
+  @Input() appareilName: string;
+  @Input() appareilStatus: string;
 
   getStatus() {
     return this.appareilStatus;
+  }
+
+  getColor(){
+    if(this.appareilStatus === 'allumé'){
+      return 'green';
+    } else if (this.appareilStatus === 'éteint'){
+      return 'red';
+    }
   }
 }
